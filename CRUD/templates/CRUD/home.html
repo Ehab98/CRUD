@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<center>
+    <br><br><br>
+    <h1>CRUD</h1>
+    <br><br><br>
+    <a href="{% url 'add_emp' %}" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="true">Add Employee</a>
+    <br><br><br>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emps in emp %}
+            <tr>
+                <th scope="row">{{emps.id}}</th>
+                <td>{{emps.ename}}</td>
+                <td>{{emps.eemail}}</td>
+                <td>{{emps.econtact}}</td>
+                <td>
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="{% url 'update_emp' emps.id %}" class="btn btn-success" role="button" aria-disabled="true">Update</a>
+                        <a href="{% url 'delete_emp' emps.id %}" class="btn btn-danger" role="button" aria-disabled="true">Delete</a>
+
+
+                  </div>
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    
+
+</center>
+{% endblock body %}
+    
